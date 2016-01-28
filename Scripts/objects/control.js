@@ -1,10 +1,13 @@
+/// <reference path="../../typings/tsd.d.ts"/>
 var objects;
 (function (objects) {
+    // CONTROL CLASS ++++++++++++++++++++++++++++++++++++++++++
     var Control = (function () {
-        function Control(rotationSpeedX, rotationSpeedY, rotationSpeedZ) {
-            this.rotationSpeedX = rotationSpeedX;
-            this.rotationSpeedY = rotationSpeedY;
-            this.rotationSpeedZ = rotationSpeedZ;
+        // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
+        function Control(rotationSpeedx, rotationSpeedy, rotationSpeedz) {
+            this.rotationSpeedx = rotationSpeedx;
+            this.rotationSpeedy = rotationSpeedy;
+            this.rotationSpeedz = rotationSpeedz;
         }
         return Control;
     })();

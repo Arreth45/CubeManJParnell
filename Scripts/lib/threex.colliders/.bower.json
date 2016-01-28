@@ -9,5 +9,6 @@
   },
   "_source": "git://github.com/jeromeetienne/threex.colliders.git",
   "_target": "*",
-  "_originalSource": "threex.colliders"
+  "_originalSource": "threex.colliders",
+  "_direct": true
 }

@@ -1,22 +1,23 @@
 {
-  "name": "comp392Assignment1",
+  "name": "comp392-lesson3-demo",
   "authors": [
-    "Jacob PArnell <>"
+    "Jake Parnell <arreth45@gmail.com>"
   ],
-  "description": "COMP392Assignment1 Cube Man",
+  "description": "Lesson 3 Demo for COMP392 for Advanced Graphics",
   "main": "",
   "moduleType": [],
   "license": "MIT",
-  "homepage": "https://github.com/Arreth45/CubeManJParnell",
+  "homepage": "https://github.com/Arreth45/Comp392-Lesson3-Demo",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
+    "test",
     "tests",
     "Scripts/lib"
   ],
   "dependencies": {
-    "three.js": "~0.72.0",
+    "three.js": "threejs#*",
     "dat-gui": "~0.5.1",
     "stats.js": "*",
     "threex.colliders": "*"
