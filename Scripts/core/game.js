@@ -96,7 +96,6 @@ function init() {
     lArm = new Mesh(cubeGeometry, cubeMaterial);
     lArm.castShadow = true;
     lArm.receiveShadow = true;
-    //lArm.position.y = 3.5;
     lArm.position.x = -1;
     body.add(lArm);
     console.log("Added Left Arm to scene...");
@@ -106,7 +105,6 @@ function init() {
     rArm = new Mesh(cubeGeometry, cubeMaterial);
     rArm.castShadow = true;
     rArm.receiveShadow = true;
-    //rArm.position.y = 3.5;
     rArm.position.x = 1;
     body.add(rArm);
     console.log("Added Right Arm to scene...");
@@ -132,7 +130,7 @@ function init() {
     console.log("Added a SpotLight Light to Scene");
     // add controls
     gui = new GUI();
-    control = new Control(0, 0, 0);
+    control = new Control(0.1, 0.1, 0.1);
     addControl(control);
     // Add framerate stats
     addStatsObject();
