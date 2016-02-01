@@ -1,5 +1,9 @@
 /// <reference path="_reference.ts"/>
 // MAIN GAME FILE
+// Jake Parnell
+// Comp392 - Assignment 1
+// Last Modified by: Jake Parnell
+// Date Last Modified Jan 28th 2016
 // THREEJS Aliases
 var Scene = THREE.Scene;
 var Renderer = THREE.WebGLRenderer;
@@ -92,20 +96,22 @@ function init() {
     console.log("Added Right Leg to scene...");
     //add Left Arm
     cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
-    cubeGeometry = new CubeGeometry(0.5, 2, 0.5);
+    cubeGeometry = new CubeGeometry(2, 0.5, 0.5);
     lArm = new Mesh(cubeGeometry, cubeMaterial);
     lArm.castShadow = true;
     lArm.receiveShadow = true;
     lArm.position.x = -1;
+    lArm.position.y = 0.8;
     body.add(lArm);
     console.log("Added Left Arm to scene...");
     //add Right Arm
     cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
-    cubeGeometry = new CubeGeometry(0.5, 2, 0.5);
+    cubeGeometry = new CubeGeometry(2, 0.5, 0.5);
     rArm = new Mesh(cubeGeometry, cubeMaterial);
     rArm.castShadow = true;
     rArm.receiveShadow = true;
     rArm.position.x = 1;
+    rArm.position.y = 0.8;
     body.add(rArm);
     console.log("Added Right Arm to scene...");
     //add Head
