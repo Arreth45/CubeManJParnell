@@ -51,6 +51,7 @@ var stats;
 var step = 0;
 var cubeGeometry;
 var cubeMaterial;
+var ambientcolour = "#0c0c0c";
 function init() {
     // Instantiate a new Scene object
     scene = new Scene();
@@ -65,8 +66,9 @@ function init() {
     plane.rotation.x = -0.5 * Math.PI;
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
+    //set colour
+    cubeMaterial = new LambertMaterial({ color: ambientcolour });
     //add Body
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
     cubeGeometry = new CubeGeometry(1.5, 2, 2);
     body = new Mesh(cubeGeometry, cubeMaterial);
     body.castShadow = true;
@@ -75,7 +77,6 @@ function init() {
     scene.add(body);
     console.log("Added Body to scene...");
     //add Left Leg
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
     cubeGeometry = new CubeGeometry(0.5, 2, 0.5);
     lLeg = new Mesh(cubeGeometry, cubeMaterial);
     lLeg.castShadow = true;
@@ -85,7 +86,6 @@ function init() {
     body.add(lLeg);
     console.log("Added Left Leg to scene...");
     //add Right Leg
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
     cubeGeometry = new CubeGeometry(0.5, 2, 0.5);
     rLeg = new Mesh(cubeGeometry, cubeMaterial);
     rLeg.castShadow = true;
@@ -95,7 +95,6 @@ function init() {
     body.add(rLeg);
     console.log("Added Right Leg to scene...");
     //add Left Arm
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
     cubeGeometry = new CubeGeometry(2, 0.5, 0.5);
     lArm = new Mesh(cubeGeometry, cubeMaterial);
     lArm.castShadow = true;
@@ -104,8 +103,7 @@ function init() {
     lArm.position.y = 0.8;
     body.add(lArm);
     console.log("Added Left Arm to scene...");
-    //add Right Arm
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
+    //add Right Arm;
     cubeGeometry = new CubeGeometry(2, 0.5, 0.5);
     rArm = new Mesh(cubeGeometry, cubeMaterial);
     rArm.castShadow = true;
@@ -115,7 +113,6 @@ function init() {
     body.add(rArm);
     console.log("Added Right Arm to scene...");
     //add Head
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
     cubeGeometry = new CubeGeometry(1.5, 1.5, 1.5);
     head = new Mesh(cubeGeometry, cubeMaterial);
     head.castShadow = true;
@@ -136,7 +133,7 @@ function init() {
     console.log("Added a SpotLight Light to Scene");
     // add controls
     gui = new GUI();
-    control = new Control(0.1, 0.1, 0.1);
+    control = new Control(0.1, 0.1, 0.1, ambientcolour);
     addControl(control);
     // Add framerate stats
     addStatsObject();
@@ -147,15 +144,14 @@ function init() {
 }
 function onResize() {
     camera.aspect = CScreen.RATIO;
-    //camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(CScreen.WIDTH, CScreen.HEIGHT);
-    //renderer.setSize(window.innerWidth, window.innerHeight);
 }
 function addControl(controlObject) {
     gui.add(controlObject, 'rotationSpeedx', -0.5, 0.5);
     gui.add(controlObject, 'rotationSpeedy', -0.5, 0.5);
     gui.add(controlObject, 'rotationSpeedz', -0.5, 0.5);
+    gui.addColor(controlObject, 'ambientcolour').onChange(function (color) { cubeMaterial.color = new Color(color); });
 }
 function addStatsObject() {
     stats = new Stats();

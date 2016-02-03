@@ -8,10 +8,11 @@ var objects;
     // CONTROL CLASS ++++++++++++++++++++++++++++++++++++++++++
     var Control = (function () {
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++++++++
-        function Control(rotationSpeedx, rotationSpeedy, rotationSpeedz) {
+        function Control(rotationSpeedx, rotationSpeedy, rotationSpeedz, ambientcolour) {
             this.rotationSpeedx = rotationSpeedx;
             this.rotationSpeedy = rotationSpeedy;
             this.rotationSpeedz = rotationSpeedz;
+            this.ambientcolour = ambientcolour;
         }
         return Control;
     })();

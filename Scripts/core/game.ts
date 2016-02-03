@@ -56,6 +56,7 @@ var stats: Stats;
 var step: number = 0;
 var cubeGeometry: CubeGeometry;
 var cubeMaterial: LambertMaterial;
+var ambientcolour = "#0c0c0c";
 
 
 function init() {
@@ -82,8 +83,10 @@ function init() {
     scene.add(plane);
     console.log("Added Plane Primitive to scene...");
     
+    //set colour
+    cubeMaterial = new LambertMaterial({ color: ambientcolour });
+    
     //add Body
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
     cubeGeometry = new CubeGeometry(1.5, 2, 2);
     body = new Mesh(cubeGeometry, cubeMaterial);
     body.castShadow = true;
@@ -94,7 +97,6 @@ function init() {
     console.log("Added Body to scene...");
      
     //add Left Leg
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
     cubeGeometry = new CubeGeometry(0.5, 2, 0.5);
     lLeg = new Mesh(cubeGeometry, cubeMaterial);
     lLeg.castShadow = true;
@@ -106,7 +108,6 @@ function init() {
     console.log("Added Left Leg to scene...");
      
     //add Right Leg
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
     cubeGeometry = new CubeGeometry(0.5, 2, 0.5);
     rLeg = new Mesh(cubeGeometry, cubeMaterial);
     rLeg.castShadow = true;
@@ -118,7 +119,6 @@ function init() {
     console.log("Added Right Leg to scene...");
      
     //add Left Arm
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
     cubeGeometry = new CubeGeometry(2, 0.5, 0.5);
     lArm = new Mesh(cubeGeometry, cubeMaterial);
     lArm.castShadow = true;
@@ -129,8 +129,7 @@ function init() {
     body.add(lArm);
     console.log("Added Left Arm to scene...");
      
-    //add Right Arm
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
+    //add Right Arm;
     cubeGeometry = new CubeGeometry(2, 0.5, 0.5);
     rArm = new Mesh(cubeGeometry, cubeMaterial);
     rArm.castShadow = true;
@@ -142,7 +141,6 @@ function init() {
     console.log("Added Right Arm to scene...");
      
     //add Head
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00 });
     cubeGeometry = new CubeGeometry(1.5, 1.5, 1.5);
     head = new Mesh(cubeGeometry, cubeMaterial);
     head.castShadow = true;
@@ -167,7 +165,7 @@ function init() {
     
     // add controls
     gui = new GUI();
-    control = new Control(0.1, 0.1, 0.1);
+    control = new Control(0.1, 0.1, 0.1 , ambientcolour );
     addControl(control);
 
     // Add framerate stats
@@ -182,16 +180,16 @@ function init() {
 
 function onResize(): void {
     camera.aspect = CScreen.RATIO;
-    //camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(CScreen.WIDTH, CScreen.HEIGHT);
-    //renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
 function addControl(controlObject: Control): void {
     gui.add(controlObject, 'rotationSpeedx', -0.5, 0.5);
     gui.add(controlObject, 'rotationSpeedy', -0.5, 0.5);
     gui.add(controlObject, 'rotationSpeedz', -0.5, 0.5);
+    
+    gui.addColor(controlObject, 'ambientcolour').onChange((color) =>{cubeMaterial.color = new Color(color);});
 }
 
 function addStatsObject() {
